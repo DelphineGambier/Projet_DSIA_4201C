@@ -14,3 +14,4 @@ class AmazonspiderItem(scrapy.Item):
     produit = scrapy.Field()
     evaluations = scrapy.Field()
     prix = scrapy.Field()
+    img_url = scrapy.Field()
