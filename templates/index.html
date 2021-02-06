@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- SITE TITTLE -->
+    <title>Home</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css' ) }}" rel="stylesheet">
+    <!-- CUSTOM CSS -->
+    <link href="{{ url_for('static', filename='css/style.css' ) }}" rel="stylesheet">
+
+</head>
+
+<body class="body-wrapper">
+
+
+<!--===============================
+=            Hero Area            =
+================================-->
+
+<section class="hero-area bg-1 text-center overly">
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Header Contetnt -->
+				<div class="content-block">
+					<h1>Les meilleures ventes </h1>
+					<p>Nos produits les plus populaires selon les ventes. Mises à jour chaque heure.</p>
+
+
+				</div>
+				<!-- Advance Search -->
+				<div class="advance-search">
+					<form>
+						<div class="row">
+							<!-- Store Search -->
+							<div class="col-lg-6 col-md-12">
+								<div class="block d-flex">
+									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search for all categories">
+                                </div>
+							</div>
+							<div class="col-lg-6 col-md-12">
+								<div class="block d-flex">
+									<!-- Search Button -->
+									<button id="btn" class="btn btn-main" onclick="jump()">SEARCH</button>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Container End -->
+</section>
+
+
+
+<!--==========================================
+=            All Category Section            =
+===========================================-->
+
+<section class=" section">
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Section title -->
+				<div class="section-title">
+					<h2>All Categories</h2>
+					<p>Nos produits les plus populaires selon les ventes. Mises à jour chaque heure.</p>
+				</div>
+				<div class="row">
+					 <!-- /Category List -->
+					<!-- Category list -->
+                    {% for d in departement %}
+
+					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+						<div class="category-block">
+							<div class="header">
+                                {% if d | length > 20 %}
+								<h4 title={{ d }}>{{ d[:19] }}…</h4>
+                                {% else %}
+                                <h4 title={{ d }}>{{ d }}</h4>
+                                {% endif %}
+							</div>
+							<ul class="category-list" >
+                                {% for p in data[d] %}
+								<li><a href="{{ url_for('depart', departement = categories_url[d]) }}" title={{ p.produit }}>
+                                    {% if p.produit | length > 13 %}
+                                    {{ p.produit[:12] }}…
+                                    {% else %}
+                                    {{ p.produit }}
+                                    {% endif %}
+                                    {% if p.prix != None %}
+                                    <span>{{ p.prix }}</span></a></li>
+                                    {% else %}
+                                    <span>Out of stock</span></a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <li><a href="{{ url_for('depart', departement = categories_url[d]) }}">
+                                        <span>Affiche plus</span></a></li>
+
+							</ul>
+						</div>
+					</div> <!-- /Category List -->
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Container End -->
+</section>
+
+
+<script type="text/javascript">
+
+    function jump(){
+        var inText = document.getElementById('search').value
+        if(inText == 'Livres'){
+            window.open("{{ url_for('depart', departement = 'books' )}}")
+        }else if(inText == 'Amazon Launchpad'){
+            window.open("{{ url_for('depart', departement = 'boost' )}}")
+        }else if(inText == 'Animalerie'){
+            window.open("{{ url_for('depart', departement = 'pet-supplies' )}}")
+        }else if(inText == 'Appareils Amazon et Accessoires'){
+            window.open("{{ url_for('depart', departement = 'amazon-devices' )}}")
+        }else if(inText == 'Applis et Jeux'){
+            window.open("{{ url_for('depart', departement = 'mobile-apps' )}}")
+        }else if(inText == 'Auto et Moto'){
+            window.open("{{ url_for('depart', departement = 'automotive' )}}")
+        }else if(inText == 'Bagages'){
+            window.open("{{ url_for('depart', departement = 'luggage' )}}")
+        }else if(inText == 'Beauté et Parfum'){
+            window.open("{{ url_for('depart', departement = 'beauty' )}}")
+        }else if(inText == 'Bijoux'){
+            window.open("{{ url_for('depart', departement = 'jewelry' )}}")
+        }else if(inText == 'Boutique Kindle'){
+            window.open("{{ url_for('depart', departement = 'digital-text' )}}")
+        }else if(inText == 'Boutique chèques-cadeaux'){
+            window.open("{{ url_for('depart', departement = 'gift-cards' )}}")
+        }else if(inText == 'Bricolage'){
+            window.open("{{ url_for('depart', departement = 'hi' )}}")
+        }else if(inText == 'Bébé et Puériculture'){
+            window.open("{{ url_for('depart', departement = 'baby' )}}")
+        }else if(inText == 'Chaussures et Sacs'){
+            window.open("{{ url_for('depart', departement = 'shoes' )}}")
+        }else if(inText == 'Commerce, Industrie et Science'){
+            window.open("{{ url_for('depart', departement = 'industrial' )}}")
+        }else if(inText == 'Cuisine et Maison'){
+            window.open("{{ url_for('depart', departement = 'kitchen' )}}")
+        }else if(inText == 'DVD et Blu-ray'){
+            window.open("{{ url_for('depart', departement = 'dvd' )}}")
+        }else if(inText == 'Epicerie'){
+            window.open("{{ url_for('depart', departement = 'grocery' )}}")
+        }else if(inText == 'Fournitures de bureau'){
+            window.open("{{ url_for('depart', departement = 'officeproduct' )}}")
+        }else if(inText == 'Gros électroménager'){
+            window.open("{{ url_for('depart', departement = 'appliances' )}}")
+        }else if(inText == 'High-Tech'){
+            window.open("{{ url_for('depart', departement = 'electronics' )}}")
+        }else if(inText == 'Hygiène et Santé'){
+            window.open("{{ url_for('depart', departement = 'hpc' )}}")
+        }else if(inText == 'Informatique'){
+            window.open("{{ url_for('depart', departement = 'computers' )}}")
+        }else if(inText == 'Instruments de musique et Sono'){
+            window.open("{{ url_for('depart', departement = 'musical-instruments' )}}")
+        }else if(inText == 'Jardin'){
+            window.open("{{ url_for('depart', departement = 'lawn-garden' )}}")
+        }else if(inText == 'Jeux et Jouets'){
+            window.open("{{ url_for('depart', departement = 'toys' )}}")
+        }else if(inText == 'Jeux vidéo'){
+            window.open("{{ url_for('depart', departement = 'videogames' )}}")
+        }else if(inText == 'Livres anglais et étrangers'){
+            window.open("{{ url_for('depart', departement = 'english-books' )}}")
+        }else if(inText == 'Livres audio Audible & Originals'){
+            window.open("{{ url_for('depart', departement = 'audible' )}}")
+        }else if(inText == 'Logiciels'){
+            window.open("{{ url_for('depart', departement = 'software' )}}")
+        }else if(inText == 'Luminaires & Eclairage'){
+            window.open("{{ url_for('depart', departement = 'lighting' )}}")
+        }else if(inText == 'Montres'){
+            window.open("{{ url_for('depart', departement = 'watch' )}}")
+        }else if(inText == 'Produits Handmade'){
+            window.open("{{ url_for('depart', departement = 'handmade' )}}")
+        }else if(inText == 'Sports et Loisirs'){
+            window.open("{{ url_for('depart', departement = 'sports' )}}")
+        }else if(inText == 'Vêtements'){
+            window.open("{{ url_for('depart', departement = 'apparel' )}}")
+        }
+    }
+</script>
+</body>
+
+</html>
+
+
+
