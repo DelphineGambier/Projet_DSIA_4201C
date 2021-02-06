@@ -36,7 +36,7 @@ E:\documents\DSIA_4201C - Data engineering\Projet>flask run
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 ```
-Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil. Il montre les 3 meilleures ventes de tous les département. Ensuite, vous pouvez cliquer sur «affiche plus» d'un département pour afficher les classements plus détaillés de ce département. Et vous pouvez également rechercher les classements détaillés d'un département via la fonction de recherche.
+Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil. Il montre les 3 meilleures ventes de tous les département. Ensuite, vous pouvez cliquer sur «affiche plus» d'un départements pour afficher les classements plus détaillés de ce département. Et vous pouvez également rechercher les classements détaillés d'un département via la fonction de recherche.
 Les fonctions détaillées sont affichées dans la section de [Présentation](#présentation)(Vous pouvez cliquer ici pour sauter au présentation).
 
 ## Structure du projet 
@@ -45,7 +45,7 @@ Ce projet est composé de Scrapy, MongoDB et flask.
 
 ### Scrapy(scraping temps réel)
 
-Ficher et dossiers: amazonSpider, scrapy.cfg, app.py
+Dossier et fichers: amazonSpider, scrapy.cfg, app.py
 
 amazonSpider
 <br/>
@@ -61,7 +61,7 @@ app.py: Après le démarrage de flask, lorsque vous visitez la page d'accueil, s
 
 ### MongoDB
 
-dossiers: pipelines.py, app.py
+Fichers: pipelines.py, app.py
 
 pipelines.py: Lorsque le pipeline est initialisé, il se connecte à la base de données via le package pymongo. Chaque fois que le pipeline reçoit 'item' capturé par 'spider', il sera inséré dans la base de données après un processus simple.
 
@@ -69,7 +69,7 @@ app.py: Après avoir démarré flask et exécuté spider, il se connectera à la
 
 ### Flask
 
-Ficher et dossiers: static, templates, app.py
+Dossier et fichers: static, templates, app.py
 
 static: Il a stocké des dossiers css, et il stockera les images téléchargées.
 
