@@ -46,13 +46,13 @@ Ce projet est composé de Scrapy, MongoDB et flask.
 Ficher et dossiers: amazonSpider, scrapy.cfg, app.py
 
 amazonSpider
-```
 Il contient deux spiders et deux pipelines et un middleware.
 spider "amazon" est pour crawler les 3 meilleures ventes de tous les département, pipeline "AmazonspiderPipeline" télécharge les données et les images pour spider "amazon".
 spider "departement" est pour crawler les 50 meilleures ventes d'un département, pipeline "departPipeline" télécharge les données et les images pour spider "departement".
 middleware "MyUserAgentMiddleware" est utilisé pour sélectionner au hasard User-Agent.
-```
+
 scrapy.cfg: dossier de configuration.
+
 app.py: Après le démarrage de flask, lorsque vous visitez la page d'accueil, spider sera exécuté pour obtenir des données et les insérer dans la base de données.
 
 
@@ -61,6 +61,7 @@ app.py: Après le démarrage de flask, lorsque vous visitez la page d'accueil, s
 dossiers: pipelines.py, app.py
 
 pipelines.py: Lorsque le pipeline est initialisé, il se connecte à la base de données via le package pymongo. Chaque fois que le pipeline reçoit 'item' capturé par 'spider', il sera inséré dans la base de données après un processus simple.
+
 app.py: Après avoir démarré flask et exécuté spider, il se connectera à la base de données pour obtenir les données et les afficher sur la page.
 
 ### Flask
@@ -68,7 +69,9 @@ app.py: Après avoir démarré flask et exécuté spider, il se connectera à la
 Ficher et dossiers: static, templates, app.py
 
 static: Il a stocké des dossiers css, et il stockera les images téléchargées.
+
 templates: Les dossiers templates sont stockés dans le ficher templates.
+
 app.py: programme flask(exécution de l'araignée, connexion à la base de données, configuration du template et transmission de données via la fonction render_template, etc.).
 
 
