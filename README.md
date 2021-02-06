@@ -9,7 +9,7 @@
 
 ## Introduction 
 
-Ce projet consiste en la création d'une application avec Flask qui présente les meilleurs ventes du site [Amazon](http://www.amazon.com).
+Ce projet consiste en la création d'une application avec Flask qui présente les meilleurs produits du site [Amazon](http://www.amazon.com) par catégorie. Pour cela nous avons d'abord scrappé les données à partir du site puis nous les avons stockées dans une base de données à laquelle accède l'application.
 
 ## Installer
 
@@ -39,3 +39,16 @@ Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil.
 
 ## Structure du projet 
 
+[setting.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/settings.py) -> toutes les variables  et parametres utilisés
+
+### Scraping
+Nous avons scrapé le site [Amazon](http://www.amazon.com) à l'aide de Scrapy.
+Le scraping s'effectue à l'aide des scripts :
+ - [pipelines.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py) qui défini le modèle pour les items qui seront scrapés.
+ - [items.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/items.py) 
+ - [middlewares.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/middlewares.py) qui permet de définir les méthodes dont nous avons besoin.
+
+### Base de donnée
+Nous avons utilisé une base de données Mongo pour stocker les données scrappées et pour pouvoir y accéder.
+
+### Flask
