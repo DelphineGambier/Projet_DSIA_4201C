@@ -37,7 +37,7 @@ E:\documents\DSIA_4201C - Data engineering\Projet>flask run
 
 ```
 Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil. Il montre les 3 meilleures ventes de tous les département. Ensuite, vous pouvez cliquer sur «affiche plus» d'un département pour afficher les classements plus détaillés de ce département. Et vous pouvez également rechercher les classements détaillés d'un département via la fonction de recherche.
-Les fonctions détaillées sont affichées dans la section de [Présentation](#présentation).
+Les fonctions détaillées sont affichées dans la section de [Présentation](#présentation)(Vous pouvez cliquer ici pour sauter au présentation).
 
 ## Structure du projet 
 
