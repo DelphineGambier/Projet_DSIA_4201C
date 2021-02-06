@@ -14,7 +14,7 @@ Ce projet consiste en la création d'une application avec Flask qui présente le
 
 ## Installer
 
-Environment et Packages: Tous les détails sont dans Pipfile et Pipfile.lock.
+Environment et Packages: Pipenv permet de créer un environnment virtuel propre pour votre projet. Toutes les librairies sont listées dans le fichier Pipfile. Le Pipfile.lock référence les versions d'installation de toutes les librairies, un hash est aussi stocké permettant de vérifier la cohérence avec les librairies déclarées et celles installées.
 
 Clonez le git repo avec la commande suivante:
 
