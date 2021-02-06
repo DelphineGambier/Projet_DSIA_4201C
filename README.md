@@ -6,13 +6,10 @@
 - [Installer](#installer)
 - [Usage](#usage)
 - [Structure du projet](#structure-du-projet)
-   * [Scraping](#scraping)
-   * [Base de données](#base-de-données)
-   * [Scraping](#scraping)
 
 ## Introduction 
 
-Ce projet consiste en la création d'une application avec Flask qui présente les meilleurs produits du site [Amazon](http://www.amazon.com) par catégorie. Pour cela nous avons d'abord scrappé les données à partir du site puis nous les avons stockées dans une base de données à laquelle accède l'application.
+Ce projet consiste en la création d'une application avec Flask qui présente les meilleurs ventes du site [Amazon](http://www.amazon.com).
 
 ## Installer
 
@@ -42,18 +39,36 @@ Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil.
 
 ## Structure du projet 
 
-[setting.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/settings.py) -> toutes les variables  et parametres utilisés
+Ce projet est composé de Scrapy, MongoDB et flask.
 
-### Scraping
+### Scrapy(scraping temps réel)
 
-Nous avons scrapé le site [Amazon](http://www.amazon.com) à l'aide de Scrapy.
-Le scraping s'effectue à l'aide des scripts :
- - [items.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/items.py) qui défini le modèle pour les items qui seront scrappés.
- - [middlewares.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/middlewares.py) qui permet de définir les méthodes dont nous avons besoin.
- - [pipelines.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py) qui permet de définir la pipeline qui traîtera les items scrappés.
+Ficher et dossiers: amazonSpider, scrapy.cfg, app.py
 
-### Base de données
+amazonSpider
+```
+Il contient deux spiders et deux pipelines et un middleware.
+spider "amazon" est pour crawler les 3 meilleures ventes de tous les département, pipeline "AmazonspiderPipeline" télécharge les données et les images pour spider "amazon".
+spider "departement" est pour crawler les 50 meilleures ventes d'un département, pipeline "departPipeline" télécharge les données et les images pour spider "departement".
+middleware "MyUserAgentMiddleware" est utilisé pour sélectionner au hasard User-Agent.
+```
+scrapy.cfg: dossier de configuration.
+app.py: Après le démarrage de flask, lorsque vous visitez la page d'accueil, spider sera exécuté pour obtenir des données et les insérer dans la base de données.
 
-Nous avons utilisé une base de données Mongo pour stocker les données scrappées et pour pouvoir y accéder.
+
+### MongoDB
+
+dossiers: pipelines.py, app.py
+
+pipelines.py: Lorsque le pipeline est initialisé, il se connecte à la base de données via le package pymongo. Chaque fois que le pipeline reçoit 'item' capturé par 'spider', il sera inséré dans la base de données après un processus simple.
+app.py: Après avoir démarré flask et exécuté spider, il se connectera à la base de données pour obtenir les données et les afficher sur la page.
 
 ### Flask
+
+Ficher et dossiers: static, templates, app.py
+
+static: Il a stocké des dossiers css, et il stockera les images téléchargées.
+templates: Les dossiers templates sont stockés dans le ficher templates.
+app.py: programme flask(exécution de l'araignée, connexion à la base de données, configuration du template et transmission de données via la fonction render_template, etc.).
+
+
