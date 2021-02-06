@@ -84,4 +84,13 @@ la page d'accueil: Il montre les 3 meilleures ventes de tous les département.
 
 la page de détail: Il montre les 50 meilleures ventes de tous les département.
 
-fonction de recherche： 
+![png](img_presentation/la%20page%20de%20détail1.png)
+![png](img_presentation/la%20page%20de%20détail2.png)
+![png](img_presentation/la%20page%20de%20détail.png)
+
+fonction de recherche
+
+![png](img_presentation/recherche1.png)
+![png](img_presentation/recherche2.png)
+![png](img_presentation/recherche3.png)
+
