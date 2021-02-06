@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Installer](#installer)
+- [Prérequis](#prérequis )
 - [Usage](#usage)
 - [Structure du projet](#structure-du-projet)
   * [Scrapy](#scrapy)
@@ -13,9 +13,9 @@
 
 ## Introduction 
 
-Ce projet consiste en la création d'une application avec Flask qui présente les meilleures ventes du site [Amazon](http://www.amazon.com).
+Ce projet consiste en la création d'une application en utilisant [Scrapy](https://docs.scrapy.org/en/latest/), [MongoDB](https://docs.mongodb.com/manual/), [Flask](https://flask.palletsprojects.com/en/1.1.x/) qui présente les meilleures ventes du site [Amazon](http://www.amazon.com) par catégorie.
 
-## Installer
+## Prérequis 
 
 Environnement et Packages : Tous les détails sont dans [Pipfile](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/Pipfile) et [Pipfile.lock](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/Pipfile.lock).
 
