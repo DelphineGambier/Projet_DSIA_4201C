@@ -6,6 +6,7 @@
 - [Installer](#installer)
 - [Usage](#usage)
 - [Structure du projet](#structure-du-projet)
+- [Présentation](#présentation)
 
 ## Introduction 
 
@@ -74,4 +75,10 @@ templates: Les dossiers templates sont stockés dans le ficher templates.
 
 app.py: programme flask(exécution de l'araignée, connexion à la base de données, configuration du template et transmission de données via la fonction render_template, etc.).
 
+## Présentation
 
+la page d'accueil: Il montre les 3 meilleures ventes de tous les département.
+
+la page de détail: Il montre les 50 meilleures ventes de tous les département.
+
+fonction de recherche： 
