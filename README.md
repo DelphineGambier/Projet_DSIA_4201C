@@ -79,6 +79,9 @@ app.py: programme flask(exécution de l'araignée, connexion à la base de donn�
 
 la page d'accueil: Il montre les 3 meilleures ventes de tous les département.
 
+![png](img_presentation/la%20page%20d'accueil1.png)
+![png](img_presentation/la%20page%20d'accueil2.png)
+
 la page de détail: Il montre les 50 meilleures ventes de tous les département.
 
 fonction de recherche： 
