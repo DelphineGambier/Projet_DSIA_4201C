@@ -6,6 +6,9 @@
 - [Installer](#installer)
 - [Usage](#usage)
 - [Structure du projet](#structure-du-projet)
+   * [Scraping](#scraping)
+   * [Base de données](#base-de-données)
+   * [Scraping](#scraping)
 
 ## Introduction 
 
@@ -42,13 +45,15 @@ Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil.
 [setting.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/settings.py) -> toutes les variables  et parametres utilisés
 
 ### Scraping
+
 Nous avons scrapé le site [Amazon](http://www.amazon.com) à l'aide de Scrapy.
 Le scraping s'effectue à l'aide des scripts :
- - [pipelines.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py) qui défini le modèle pour les items qui seront scrapés.
- - [items.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/items.py) 
+ - [items.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/items.py) qui défini le modèle pour les items qui seront scrappés.
  - [middlewares.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/middlewares.py) qui permet de définir les méthodes dont nous avons besoin.
+ - [pipelines.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py) qui permet de définir la pipeline qui traîtera les items scrappés.
 
-### Base de donnée
+### Base de données
+
 Nous avons utilisé une base de données Mongo pour stocker les données scrappées et pour pouvoir y accéder.
 
 ### Flask
