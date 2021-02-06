@@ -6,15 +6,18 @@
 - [Installer](#installer)
 - [Usage](#usage)
 - [Structure du projet](#structure-du-projet)
+  * [Scrapy](#scrapy)
+  * [MongoDB](#mongodb)
+  * [Flask](#flask)
 - [Présentation](#présentation)
 
 ## Introduction 
 
-Ce projet consiste en la création d'une application avec Flask qui présente les meilleurs ventes du site [Amazon](http://www.amazon.com).
+Ce projet consiste en la création d'une application avec Flask qui présente les meilleures ventes du site [Amazon](http://www.amazon.com).
 
 ## Installer
 
-Environment et Packages: Pipenv permet de créer un environnment virtuel propre pour votre projet. Toutes les librairies sont listées dans le fichier Pipfile. Le Pipfile.lock référence les versions d'installation de toutes les librairies, un hash est aussi stocké permettant de vérifier la cohérence avec les librairies déclarées et celles installées.
+Environnement et Packages: Tous les détails sont dans Pipfile et Pipfile.lock.
 
 Clonez le git repo avec la commande suivante:
 
@@ -36,52 +39,53 @@ E:\documents\DSIA_4201C - Data engineering\Projet>flask run
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 ```
-Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil. Il montre les 3 meilleures ventes de tous les département. Ensuite, vous pouvez cliquer sur «affiche plus» d'un départements pour afficher les classements plus détaillés de ce département. Et vous pouvez également rechercher les classements détaillés d'un département via la fonction de recherche.
-Les fonctions détaillées sont affichées dans la section de [Présentation](#présentation)(Vous pouvez cliquer ici pour sauter au présentation).
+Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil.
 
 ## Structure du projet 
 
-Ce projet est composé de Scrapy, MongoDB et flask.
+Ce projet a utilisé différents outils : 
+- [Scrapy](https://docs.scrapy.org/en/latest/) 
+- [MongoDB](https://docs.mongodb.com/manual/) 
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
-### Scrapy(scraping temps réel)
+### Scrapy 
 
-Dossier et fichers: amazonSpider, scrapy.cfg, app.py
+Pour notre application, nous avons fais le choix d'utiliser un scraping en temps réel.
 
-amazonSpider
-<br/>
-Il contient deux spiders et deux pipelines et un middleware.
-spider "amazon" est pour crawler les 3 meilleures ventes de tous les département, pipeline "AmazonspiderPipeline" télécharge les données et les images pour spider "amazon".
-spider "departement" est pour crawler les 50 meilleures ventes d'un département, pipeline "departPipeline" télécharge les données et les images pour spider "departement".
-middleware "MyUserAgentMiddleware" est utilisé pour sélectionner au hasard User-Agent.
+Fichers et dossiers: [amazonSpider](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/amazonSpider), [scrapy.cfg](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/scrapy.cfg), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
 
-scrapy.cfg: dossier de configuration.
+- [amazonSpider](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/amazonSpider) : Il contient deux spiders, deux pipelines et un middleware. Spider "amazon" sert à crawler les 3 meilleures ventes de tous les départements, [pipeline](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py) "AmazonspiderPipeline" télécharge les données et les images pour spider "amazon".
+spider "departement" est pour crawler les 50 meilleures ventes d'un département, pipeline "departPipeline" télécharge les données et les images pour spider "departement". [Middleware](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/middlewares.py) "MyUserAgentMiddleware" est utilisé pour sélectionner au hasard un User-Agent.
 
-app.py: Après le démarrage de flask, lorsque vous visitez la page d'accueil, spider sera exécuté pour obtenir des données et les insérer dans la base de données.
+- [scrapy.cfg](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/scrapy.cfg): dossier de configuration.
+
+- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py): Après le démarrage de flask, lorsque vous visitez la page d'accueil, spider sera exécuté pour récupérer des données et les insérer dans la base de données.
 
 
 ### MongoDB
 
-Fichers: pipelines.py, app.py
+Dossiers et fichiers : [pipeline.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
 
-pipelines.py: Lorsque le pipeline est initialisé, il se connecte à la base de données via le package pymongo. Chaque fois que le pipeline reçoit 'item' capturé par 'spider', il sera inséré dans la base de données après un processus simple.
+- [pipeline.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py): Lorsque le pipeline est initialisé, il se connecte à la base de données via le package pymongo. Chaque fois que le pipeline reçoit un 'item' capturé par 'spider', il sera inséré dans la base de données après un processus simple.
 
-app.py: Après avoir démarré flask et exécuté spider, il se connectera à la base de données pour obtenir les données et les afficher sur la page.
+- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py): Après avoir démarré flask et exécuté spider, il se connecte à la base de données pour obtenir les données et les afficher sur la page.
 
 ### Flask
 
-Dossier et fichers: static, templates, app.py
+Fichers et dossiers: [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static), templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
 
-static: Il a stocké des dossiers css, et il stockera les images téléchargées.
+- [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static): Il stocke des dossiers css, et les images téléchargées.
 
-templates: Les dossiers templates sont stockés dans le ficher templates.
+- templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates): Il stocke les modèles qui seront affichés.
 
-app.py: programme flask(exécution de l'araignée, connexion à la base de données, configuration du template et transmission de données via la fonction render_template, etc.).
+- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py): Programme flask qui procède à l' exécution de spider, la connexion à la base de données, la configuration du template et la transmission de données via la fonction render_template.
 
 ## Présentation
 
-Parce qu'il y a trop de données, les images ne sont pas affichées complètement.
+Voici un aperçu du résultat obtenu.
 
-la page d'accueil: Il montre les 3 meilleures ventes de tous les département.
+### La page d'accueil 
+La page d'accueil montre les 3 meilleures ventes de chaque département.
 
 ![png](img_presentation/la%20page%20d'accueil1.png)
 &nbsp; 
@@ -89,7 +93,8 @@ la page d'accueil: Il montre les 3 meilleures ventes de tous les département.
 
  &nbsp;  
  &nbsp;
-la page de détail: Il montre les 50 meilleures ventes de tous les département.
+### La page de détail
+La page de détail montre les 50 meilleures ventes du département lorque que l'on clique sur "Affiche plus".
 &nbsp; 
 ![png](img_presentation/la%20page%20de%20détail1.png)
 &nbsp; 
@@ -99,7 +104,8 @@ la page de détail: Il montre les 50 meilleures ventes de tous les département.
 
  &nbsp; 
  &nbsp;
-fonction de recherche
+### La fonction de recherche
+La fonction de recherche permet de rechercher plus précisément un produit grâce à une barre de recherche.
 
 ![png](img_presentation/recherche1.png)
 &nbsp; 
