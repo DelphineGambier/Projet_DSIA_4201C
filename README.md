@@ -48,6 +48,7 @@ Ce projet est composé de Scrapy, MongoDB et flask.
 Ficher et dossiers: amazonSpider, scrapy.cfg, app.py
 
 amazonSpider
+&nbsp;
 Il contient deux spiders et deux pipelines et un middleware.
 spider "amazon" est pour crawler les 3 meilleures ventes de tous les département, pipeline "AmazonspiderPipeline" télécharge les données et les images pour spider "amazon".
 spider "departement" est pour crawler les 50 meilleures ventes d'un département, pipeline "departPipeline" télécharge les données et les images pour spider "departement".
