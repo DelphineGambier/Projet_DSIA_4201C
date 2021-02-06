@@ -45,9 +45,9 @@ class AmazonspiderPipeline:
         if item['prix'] != None:
             item['prix'] = self.clean_string(item['prix'])
         # self.exporter.export_item(item)
-        # result = self.collection.find_one({"$and":[{"classement":item['classement'], "departement":item['departement']}]})
-        # if result is None:
-        self.collection.insert(dict(item))
+        result = self.collection.find_one({"$and":[{"classement":item['classement'], "departement":item['departement']}]})
+        if result is None:
+            self.collection.insert(dict(item))
         return item
 
     def clean_string(self,string):

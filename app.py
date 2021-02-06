@@ -1,7 +1,6 @@
 
 
 from flask import Flask, render_template, url_for
-import json
 import subprocess
 import pymongo
 
@@ -9,8 +8,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     subprocess.check_output("scrapy crawl amazon")
-    # with open('json/produits_exporter.json', 'r', encoding='utf-8') as f:
-    #     data = json.load(f)
     connection = pymongo.MongoClient("mongodb://localhost:27017")
     db = connection["amazon"]
     collection = db["les3premier"]
@@ -30,8 +27,6 @@ def index():
 def depart(departement):
     ll = "scrapy crawl departement -a category="+departement
     subprocess.check_output(ll)
-    # with open('json/departementDetails.json', 'r', encoding='utf-8') as f:
-    #     data = json.load(f)
     connection = pymongo.MongoClient("mongodb://localhost:27017")
     db = connection["amazon"]
     collection = db["produits"]
