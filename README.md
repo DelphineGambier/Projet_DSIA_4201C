@@ -77,19 +77,22 @@ app.py: programme flask(exécution de l'araignée, connexion à la base de donn�
 
 ## Présentation
 
-Parce qu'il y a trop de données, elles ne sont pas complètes.
+Parce qu'il y a trop de données, les images ne sont pas affichées complètement.
 
 la page d'accueil: Il montre les 3 meilleures ventes de tous les département.
 
 ![png](img_presentation/la%20page%20d'accueil1.png)
+&nbsp; 
 ![png](img_presentation/la%20page%20d'accueil2.png)
 
  &nbsp;  
  &nbsp;
 la page de détail: Il montre les 50 meilleures ventes de tous les département.
-
+&nbsp; 
 ![png](img_presentation/la%20page%20de%20détail1.png)
+&nbsp; 
 ![png](img_presentation/la%20page%20de%20détail2.png)
+&nbsp; 
 ![png](img_presentation/la%20page%20de%20détail.png)
 
  &nbsp; 
@@ -97,6 +100,10 @@ la page de détail: Il montre les 50 meilleures ventes de tous les département.
 fonction de recherche
 
 ![png](img_presentation/recherche1.png)
+&nbsp; 
 ![png](img_presentation/recherche2.png)
+&nbsp; 
 ![png](img_presentation/recherche3.png)
+&nbsp; 
+
 
