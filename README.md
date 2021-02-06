@@ -72,11 +72,11 @@ Dossiers et fichiers : [pipeline.py](https://github.com/DelphineGambier/Projet_D
 
 ### Flask
 
-Fichers et dossiers : [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static), templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
+Fichers et dossiers : [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static), [templates](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
 
 - [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static) : Il stocke des dossiers css, et les images téléchargées.
 
-- templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates) : Il stocke les modèles qui seront affichés.
+- [templates](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates) : Il stocke les modèles qui seront affichés.
 
 - [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py) : Programme flask qui procède à l'exécution de spider, la connexion à la base de données, la configuration du template et la transmission de données via la fonction render_template.
 
