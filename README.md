@@ -17,9 +17,9 @@ Ce projet consiste en la création d'une application avec Flask qui présente le
 
 ## Installer
 
-Environnement et Packages: Tous les détails sont dans Pipfile et Pipfile.lock.
+Environnement et Packages : Tous les détails sont dans [Pipfile](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/Pipfile) et [Pipfile.lock](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/Pipfile.lock).
 
-Clonez le git repo avec la commande suivante:
+Clonez le git répertoire avec la commande suivante :
 
 ```
 git clone https://github.com/DelphineGambier/Projet_DSIA_4201C.git
@@ -27,7 +27,7 @@ git clone https://github.com/DelphineGambier/Projet_DSIA_4201C.git
 
 ## Usage
 
-Exécutez "flask run" dans le terminal, normalement c'est comme suit après l'exécution.
+Exécutez "flask run" dans le terminal, cela donne le résultat-ci dessous.
 
 ```
 E:\documents\DSIA_4201C - Data engineering\Projet>flask run
@@ -39,7 +39,7 @@ E:\documents\DSIA_4201C - Data engineering\Projet>flask run
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 ```
-Entrez http://127.0.0.1:5000/, puis vous pouvez voir la page d'accueil.
+Entrez http://127.0.0.1:5000/ dans votre navigateur pour voir la page d'accueil.
 
 ## Structure du projet 
 
@@ -52,14 +52,14 @@ Ce projet a utilisé différents outils :
 
 Pour notre application, nous avons fais le choix d'utiliser un scraping en temps réel.
 
-Fichers et dossiers: [amazonSpider](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/amazonSpider), [scrapy.cfg](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/scrapy.cfg), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
+Fichers et dossiers : [amazonSpider](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/amazonSpider), [scrapy.cfg](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/scrapy.cfg), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
 
-- [amazonSpider](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/amazonSpider) : Il contient deux spiders, deux pipelines et un middleware. Spider "amazon" sert à crawler les 3 meilleures ventes de tous les départements, [pipeline](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py) "AmazonspiderPipeline" télécharge les données et les images pour spider "amazon".
-spider "departement" est pour crawler les 50 meilleures ventes d'un département, pipeline "departPipeline" télécharge les données et les images pour spider "departement". [Middleware](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/middlewares.py) "MyUserAgentMiddleware" est utilisé pour sélectionner au hasard un User-Agent.
+- [amazonSpider](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/amazonSpider) : Il contient deux spiders, deux pipelines et un middleware. Spider "amazon" sert à crawler les 3 meilleures ventes de tous les départements, [pipeline](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py) "AmazonspiderPipeline" télécharge les données et les images pour le spider "amazon".
+Le spider "departement" est pour crawler les 50 meilleures ventes d'un département, le pipeline "departPipeline" télécharge les données et les images pour spider "departement". [Middleware](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/middlewares.py) "MyUserAgentMiddleware" est utilisé pour sélectionner au hasard un User-Agent.
 
-- [scrapy.cfg](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/scrapy.cfg): dossier de configuration.
+- [scrapy.cfg](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/scrapy.cfg) : Dossier de configuration.
 
-- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py): Après le démarrage de flask, lorsque vous visitez la page d'accueil, spider sera exécuté pour récupérer des données et les insérer dans la base de données.
+- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py) : Après le démarrage de flask, lorsque vous visitez la page d'accueil, spider sera exécuté pour récupérer des données et les insérer dans la base de données.
 
 
 ### MongoDB
@@ -68,17 +68,17 @@ Dossiers et fichiers : [pipeline.py](https://github.com/DelphineGambier/Projet_D
 
 - [pipeline.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/amazonSpider/pipelines.py): Lorsque le pipeline est initialisé, il se connecte à la base de données via le package pymongo. Chaque fois que le pipeline reçoit un 'item' capturé par 'spider', il sera inséré dans la base de données après un processus simple.
 
-- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py): Après avoir démarré flask et exécuté spider, il se connecte à la base de données pour obtenir les données et les afficher sur la page.
+- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py) : Après avoir démarré flask et exécuté spider, il se connecte à la base de données pour obtenir les données et les afficher sur la page.
 
 ### Flask
 
-Fichers et dossiers: [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static), templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
+Fichers et dossiers : [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static), templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates), [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py)
 
-- [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static): Il stocke des dossiers css, et les images téléchargées.
+- [static](https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/static) : Il stocke des dossiers css, et les images téléchargées.
 
-- templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates): Il stocke les modèles qui seront affichés.
+- templates(https://github.com/DelphineGambier/Projet_DSIA_4201C/tree/main/templates) : Il stocke les modèles qui seront affichés.
 
-- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py): Programme flask qui procède à l' exécution de spider, la connexion à la base de données, la configuration du template et la transmission de données via la fonction render_template.
+- [app.py](https://github.com/DelphineGambier/Projet_DSIA_4201C/blob/main/app.py) : Programme flask qui procède à l'exécution de spider, la connexion à la base de données, la configuration du template et la transmission de données via la fonction render_template.
 
 ## Présentation
 
